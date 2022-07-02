@@ -1,0 +1,15 @@
+// Implementation of Half-Adder in jack.
+
+class HalfAdder {
+  function int sum(int a, int b){
+     var int out;
+     let out = Xor.xor(a,b);
+     return out;
+   }
+
+   function int carry(int a, int b){
+      var int out;
+      let out = And.and(a, b);
+      return out;
+    }
+}

@@ -1,0 +1,15 @@
+// Implementation of Full-Adder in jack.
+
+class FullAdder {
+  function int sum(int a, int b, int c){
+     var int out;
+     let out = Xor.xor(Xor.xor(a,b),c);
+     return out;
+   }
+
+   function int carry(int a, int b, int c){
+      var int out;
+      let out = Or.or(Or.or(And.and(a, b),And.and(b, c)),And.and(a, c));
+      return out;
+    }
+}
