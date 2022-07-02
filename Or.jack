@@ -1,0 +1,9 @@
+// Implementation Or-gate using nand gate in jack
+
+class Or {
+  function Int or(int a, int b){
+     var int out;
+     let out = Nand.nand(Nand.nand(a, a), Nand.nand(b, b));
+     return out;
+   }
+}

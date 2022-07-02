@@ -1,0 +1,9 @@
+// Implementation of And-gate using Nand in jack
+
+class And {
+  function Int and(int a, int b){
+     var int out;
+     let out = Nand.nand(Nand.nand(a, b), Nand.nand(a, b));
+     return out;
+   }
+}

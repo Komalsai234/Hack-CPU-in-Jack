@@ -1,0 +1,10 @@
+// Implementation of Not-gate using Nand gate
+
+class Not {
+  function Int not(int in){
+     var int out;
+     let out = Nand.nand(in, in);
+
+     return out;
+   }
+}

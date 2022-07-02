@@ -1,0 +1,15 @@
+// Implementation of Xor-gate in jack
+
+class Xor {
+  function Int xor(int a, int b){
+     var int na, nb, c, d, out;
+
+     let na = Not.not(a);
+     let nb = Not.not(b);
+     let c = And.and(na, b);
+     let d = And.and(a, nb);
+     let out = Or.or(c, d);
+
+     return out;
+   }
+}
