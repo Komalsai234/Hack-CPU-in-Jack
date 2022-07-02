@@ -1,0 +1,95 @@
+class Main {
+  function void main() {
+    var Array a, b, c;
+    var int inM, instruction, reset;
+    var int i,d;
+
+    let inM = Keyboard.readInt("Enter the value of inM: ");
+    let instruction = Keyboard.readInt("Enter the value of instruction: ");
+    let reset = Keyboard.readInt("Enter the value of reset: ");
+
+    do Output.println();
+
+    do Output.printString("The Value of outM is: ");
+
+    let a = CPU.o1(inM,instruction,reset);
+
+    let i = 0;
+    while(i < 16){
+      do Output.printInt(a[i]);
+      let i = i + 1;
+    }
+
+    do Output.println();
+
+    do Output.printString("The Value of writeM is: ");
+
+    let d = CPU.o2(inM, instruction, reset);
+    do Output.printInt(d);
+
+    do Output.println();
+
+    do Output.printString("The Value of addressM is: ");
+
+    let b = CPU.addressm(inM, instruction, reset);
+
+    let i = 0;
+    while(i < 16){
+      do Output.printInt(b[i]);
+      let i = i + 1;
+    }
+
+    do Output.println();
+
+    do Output.printString("The Value of pc is: ");
+
+    let c = CPU.o3(inM, instruction, reset);
+
+    let i = 0;
+    while(i < 16){
+      do Output.printInt(c[i]);
+      let i = i + 1;
+    }
+
+
+
+    /*let a = PC.pc(5,0,1,0);
+    let i = 0;
+    while(i < 16){
+      do Output.printInt(a[i]);
+      let i = i + 1;
+    }*/
+
+  /*  let a = CPU.o1(100,200,0);
+    //do Output.printInt(i);
+
+    let i = 0;
+    while(i < 16){
+      do Output.printInt(a[i]);
+      let i = i + 1;
+    }*/
+
+  /*  let a = Register16.register16(0,2,1);
+    let i = 0;
+    while(i < 16){
+      do Output.printInt(a[i]);
+      let i = i + 1;
+    }*/
+
+//  let i = Or8Way.or8way(0);
+
+  //  do Output.printInt(i);
+
+    //let a = Mux.mux(1,0,1);
+    //do Output.printInt(a);
+
+
+    /*let a = Not16.not16(2);
+    let i = 0;
+    while(i < 16){
+      do Output.printInt(a[i]);
+      let i = i + 1;
+    }*/
+      return;
+  }
+}

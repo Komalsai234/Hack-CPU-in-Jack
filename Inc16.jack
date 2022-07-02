@@ -1,0 +1,11 @@
+// Implementation of 16-bit Incrementor in jack.
+
+class Inc16 {
+  function Array inc16(int a){
+     var Array out;
+
+     let out = Add16.add16(a,1);
+
+     return out;
+   }
+}

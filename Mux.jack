@@ -1,0 +1,11 @@
+// Implementation of Mux-gate using Nand gate
+
+class Mux {
+  function Int mux(int a, int b, int sel){
+     var int out;
+
+     let out = Nand.nand(Nand.nand(a,(Nand.nand(sel,sel))),Nand.nand(b,sel));
+
+     return out;
+   }
+}

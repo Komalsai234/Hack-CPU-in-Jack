@@ -1,0 +1,29 @@
+// Implementation 16-bit of Mux-gate in jack.
+
+class Mux16 {
+  function Array mux16(int a, int b, int sel){
+     var Array out,x,y;
+     var int i;
+
+     let x = toBinaryall.toBinall(a);
+     let y = toBinaryall.toBinall(b);
+
+     let out = Array.new(16);
+
+     if(sel = 1){
+       let i = 0;
+       while(i < 16){
+         let out[i] = y[i];
+         let i = i + 1;
+       }
+     }
+     if(sel = 0){
+       let i = 0;
+       while(i < 16){
+         let out[i] = x[i];
+         let i = i + 1;
+     }
+   }
+     return out;
+   }
+}
