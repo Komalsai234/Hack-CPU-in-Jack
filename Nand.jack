@@ -1,0 +1,16 @@
+// Implementation of Nand gate in jack
+
+class Nand {
+  function int nand(int a, int b){
+     var int out;
+     let out = 0;
+
+     if(a = 1 & b = 1){
+       let out = 0;
+     }
+     else{
+       let out = 1;
+     }
+     return out;
+   }
+}
