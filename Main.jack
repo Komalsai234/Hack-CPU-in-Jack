@@ -50,46 +50,6 @@ class Main {
       do Output.printInt(c[i]);
       let i = i + 1;
     }
-
-
-
-    /*let a = PC.pc(5,0,1,0);
-    let i = 0;
-    while(i < 16){
-      do Output.printInt(a[i]);
-      let i = i + 1;
-    }*/
-
-  /*  let a = CPU.o1(100,200,0);
-    //do Output.printInt(i);
-
-    let i = 0;
-    while(i < 16){
-      do Output.printInt(a[i]);
-      let i = i + 1;
-    }*/
-
-  /*  let a = Register16.register16(0,2,1);
-    let i = 0;
-    while(i < 16){
-      do Output.printInt(a[i]);
-      let i = i + 1;
-    }*/
-
-//  let i = Or8Way.or8way(0);
-
-  //  do Output.printInt(i);
-
-    //let a = Mux.mux(1,0,1);
-    //do Output.printInt(a);
-
-
-    /*let a = Not16.not16(2);
-    let i = 0;
-    while(i < 16){
-      do Output.printInt(a[i]);
-      let i = i + 1;
-    }*/
       return;
   }
 }
