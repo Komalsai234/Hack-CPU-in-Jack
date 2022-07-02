@@ -1,0 +1,19 @@
+// Implementation of 16-bit Or-gate in jack
+
+class Or16 {
+  function Array or16(int a, int b){
+     var Array out;
+     var int Bina,Binb,i;
+
+     let Bina = toBinary.toBin(a);
+     let Binb = toBinary.toBin(b);
+     let out = Array.new(16);
+
+     let i = 0;
+     while(i < 16){
+       let out[i] = Or.or(Bina[i],Binb[i]);
+       let i = i + 1;
+     }
+     return out;
+   }
+}

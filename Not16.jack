@@ -1,0 +1,18 @@
+// 16-bit implementation of Not-gate in jack.
+
+class Not16 {
+  function Array not16(int a){
+     var Array out;
+     var int a1,i;
+
+     let a1 = toBinaryall.toBinall(a);
+     let out = Array.new(16);
+
+     let i = 0;
+     while(i < 16){
+       let out[i] = Not.not(a1[i]);
+       let i = i + 1;
+     }
+     return out;
+   }
+}

@@ -1,0 +1,20 @@
+// Implementation of 16-bit register in jack.
+
+class Register16 {
+  function Array register16(int prevout, int in, int load){
+     var Array out,a,b;
+     var int i;
+
+     let out = Array.new(16);
+     let a = toBinaryall.toBinall(prevout);
+     let b = toBinaryall.toBinall(in);
+
+     let i = 0;
+     while(i < 16){
+       let out[i] = Register.register(a[i],b[i],load);
+       let i = i + 1;
+     }
+
+     return out;
+   }
+}

@@ -1,0 +1,21 @@
+// Implementation of Or-8-way in jack.
+
+class Or8Way {
+  function int or8way(int x){
+     var int a,b,c,d,e,f,out;
+     var Array l;
+     let l = Array.new(8);
+
+     let l = toBinary8.toBin8(x);
+
+     let a = Or.or(l[0],l[1]);
+     let b = Or.or(a,l[2]);
+     let c = Or.or(b,l[3]);
+     let d = Or.or(c,l[4]);
+     let e = Or.or(d,l[5]);
+     let f = Or.or(e,l[6]);
+     let out = Or.or(f,l[7]);
+
+     return out;
+   }
+}

@@ -1,0 +1,79 @@
+// Jack code to convert 16-bit binary representation into corresponding decimal.
+
+class toBinaryall {
+  function Array toBinall(int a){
+    var Array f, f1,f2,notf2,f3;
+    var int pos,i,cf1,cf2,cnotf2,cf;
+    var int c,d,e,g,h,i,j,k,l,m,n,o,p,q,z;
+
+    let f = Array.new(16);
+    let f1 = Array.new(16);
+    let f2 = Array.new(16);
+
+    if (a > 0){
+      let f = toBinary.toBin(a);
+    }
+
+    if(a < 0){
+      let a = -(a);
+      let f1 = toBinary.toBin(a);
+
+      let i = 0;
+      while(i < 16){
+        let f2[i] = Not.not(f1[i]);
+        let i = i + 1;
+      }
+       let f3 = toBinary.toBin(1);
+
+      let f[15] = HalfAdder.sum(f2[15],f3[15]);
+      let c = HalfAdder.carry(f2[15],f3[15]);
+
+      let f[14] = FullAdder.sum(f2[14],f3[14],c);
+      let d = FullAdder.carry(f2[14],f3[14],c);
+
+  		let f[13] = FullAdder.sum(f2[13],f3[13],d);
+  		let e = FullAdder.carry(f2[13],f3[13],d);
+
+  		let f[12] = FullAdder.sum(f2[12],f3[12],e);
+  		let z = FullAdder.carry(f2[12],f3[12],e);
+
+  		let f[11] = FullAdder.sum(f2[11],f3[11],z);
+  		let g = FullAdder.carry(f2[11],f3[11],z);
+
+  		let f[10] =FullAdder.sum(f2[10],f3[10],g);
+  		let h = FullAdder.carry(f2[10],f3[10],g);
+
+  		let f[9] = FullAdder.sum(f2[9],f3[9],h);
+  		let i = FullAdder.carry(f2[9],f3[9],h);
+
+  		let f[8] = FullAdder.sum(f2[8],f3[8],i);
+  		let j = FullAdder.carry(f2[8],f3[8],i);
+
+  		let f[7] = FullAdder.sum(f2[7],f3[7],j);
+  		let k  =  FullAdder.carry(f2[7],f3[7],j);
+
+  		let f[6] = FullAdder.sum(f2[6],f3[6],k);
+  		let l = FullAdder.carry(f2[6],f3[6],k);
+
+  		let f[5] = FullAdder.sum(f2[5],f3[5],l);
+  		let m = FullAdder.carry(f2[5],f3[5],l);
+
+  		let f[4] = FullAdder.sum(f2[4],f3[4],m);
+  		let n = FullAdder.carry(f2[4],f3[4],m);
+
+  		let f[3] = FullAdder.sum(f2[3],f3[3],n);
+  		let o = FullAdder.carry(f2[3],f3[3],n);
+
+  		let f[2] = FullAdder.sum(f2[2],f3[2],o);
+  		let p = FullAdder.carry(f2[2],f3[2],o);
+
+  		let f[1] = FullAdder.sum(f2[1],f3[1],p);
+  		let q = FullAdder.carry(f2[1],f3[1],p);
+
+      let f[0] = FullAdder.sum(f2[0],f3[0],q);
+
+    }
+    return f;
+  }
+
+}

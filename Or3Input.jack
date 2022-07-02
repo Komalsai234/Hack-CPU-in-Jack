@@ -1,0 +1,12 @@
+// Implementation of Or-gate with three inputs in jack.
+
+class Or3Input {
+  function Int or3input(int a, int b, int c){
+     var int t1,out;
+
+     let t1 = Or.or(a,b);
+     let out = Or.or(t1,c);
+
+     return out;
+   }
+}

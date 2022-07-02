@@ -1,0 +1,38 @@
+// Implementation Program Counter in jack.
+
+class PC {
+  function Array pc(int in, int load,int inc,int reset){
+     var Array fl,prevout,FBout,incout,w0,w1,cout;
+     var int regload,cFBout,cincout,cw0,cw1,cfl,cprevout,ccout;
+
+     let fl = Array.new(16);
+     let prevout = Array.new(16);
+     let FBout = Array.new(16);
+
+     let cFBout = toDecimal.toDec(FBout);
+
+     let regload = Or3Input.or3input(inc,load,reset);
+     let incout = Inc16.inc16(cFBout);
+
+     let cincout = toDecimal.toDec(incout);
+
+     let w0 = Mux16.mux16(cFBout,cincout,inc);
+
+     let cw0 = toDecimal.toDec(w0);
+     let w1 = Mux16.mux16(cw0,in,load);
+
+     let cw1 = toDecimal.toDec(w1);
+     let cfl = toDecimal.toDec(fl);
+
+     let cout = Mux16.mux16(cw1,cfl,reset);
+
+     let cprevout = toDecimal.toDec(prevout);
+     let ccout = toDecimal.toDec(cout);
+
+
+     let FBout = Register16.register16(cprevout,ccout,regload);
+
+     return FBout;
+
+   }
+}

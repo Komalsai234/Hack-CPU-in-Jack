@@ -1,0 +1,12 @@
+// Implementation of register in jack.
+
+class Register {
+  function Int register(int prevout, int in, int load){
+     var int t;
+     var int stage1;
+
+     let stage1 = Mux.mux(prevout,in,load);
+     let t = DFF.dff(stage1,1);
+     return stage1;
+   }
+}

@@ -1,0 +1,37 @@
+// Jack code to convert decimal into 8-bit binary representation.
+
+class toBinary8 {
+  function Array toBin8(int a){
+    var Array f;
+    var int pos,i;
+
+    let f = Array.new(8);
+
+    let pos = 7;
+    while(a > 0){
+      let f[pos - i] = toBinary.remainder(a, 2);
+      let a = a / 2;
+      let pos = pos - 1;
+    }
+
+    return f;
+  }
+
+
+   function int remainder(int a, int b){
+     var int minus;
+     var int quoitent;
+     var int rem;
+
+     let minus = a-b;
+     let quoitent = 0;
+
+     while(minus > -1){
+       let minus = minus - b;
+       let quoitent = quoitent + 1;
+     }
+     let rem = minus + b;
+     return rem;
+   }
+
+}

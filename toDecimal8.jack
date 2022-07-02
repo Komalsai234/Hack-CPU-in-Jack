@@ -1,0 +1,26 @@
+// Jack code to convert 8-bit binary representation into corresponding decimal.
+
+class toDecimal8 {
+  function int toDec8(Array n){
+    var int i,j,num,sum;
+    var Array s;
+    let s = Array.new(8);
+    let i = 0;
+    while(i < 8){
+      let s[i] = n[i];
+      let i = i + 1;
+    }
+
+    let i = 7;
+    let j = 1;
+    while(i > -1){
+      let num = (s[i]) * (j);
+      let sum = sum + num;
+      let i = i - 1;
+      let j = j * 2;
+    }
+
+    return sum;
+  }
+
+}
