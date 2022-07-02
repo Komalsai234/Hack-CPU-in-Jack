@@ -1,0 +1,19 @@
+// Implementation of 16-bit And gate in Jack.
+
+class And16 {
+  function Array and16(int a, int b){
+     var Array out;
+     var int Bina,Binb,i;
+
+     let Bina = toBinaryall.toBinall(a);
+     let Binb = toBinaryall.toBinall(b);
+     let out = Array.new(16);
+
+     let i = 0;
+     while(i < 16){
+       let out[i] = And.and(Bina[i],Binb[i]);
+       let i = i + 1;
+     }
+     return out;
+   }
+}

@@ -1,0 +1,16 @@
+// Implementation of Data Flip-Flop in jack.
+
+class DFF{
+  function Array dff(int data, int clk){
+    var int Sout,Notout,Rout,notQ,Q;
+     if(clk = 1){
+       let Sout = Nand.nand(data,clk);
+       let Notout = Not.not(data);
+
+       let Rout = Nand.nand(clk,Notout);
+       let notQ = Nand.nand(Rout,Q);
+       let Q = Nand.nand(Sout,notQ);
+     }
+     return Q;
+   }
+}

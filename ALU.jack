@@ -1,0 +1,167 @@
+// Implementation of Arithmetic Logic Unit in jack.
+
+class ALU {
+  function Array alu(int zx, int nx, int zy, int ny, int f, int no, int x, int y){
+    var Array out, x1, y1, x2, y2,notx1, notx2, noty1,noty2;
+    var Array addout, andout,fout, notfout;
+    var Arary outfirst, outsecond;
+    var int fls, tr, cx1,coutfirst,coutsecond,cnotx1,cy1,cx2,cy2,caddout,candout;
+    var int i,j,a,cfout,cnotfout,cnoty1, final;
+    var int ng,zr,zr0,zr1,zr2;
+
+    let outfirst = Array.new(8);
+    let outsecond = Array.new(8);
+
+    let fls = 0;
+    let tr = 0;
+
+    let x1 = Mux16.mux16(x, fls, zx);
+    let y1 = Mux16.mux16(y,fls,zy);
+
+    let cx1 = toDecimal.toDec(x1);
+    let notx1 = Not16.not16(cx1);
+    let cnotx1 = toDecimal.toDec(notx1);
+    let x2 = Mux16.mux16(cx1,cnotx1,nx);
+
+    let cy1 = toDecimal.toDec(y1);
+    let noty1 = Not16.not16(cy1);
+    let cnoty1 = toDecimal.toDec(noty1);
+    let y2 = Mux16.mux16(cy1,cnoty1,ny);
+
+    let cx2 = toDecimal.toDec(x2);
+    let cy2 = toDecimal.toDec(y2);
+
+    let addout = Add16.add16(cx2,cy2);
+    let andout = And16.and16(cx2,cy2);
+
+    let caddout = toDecimal.toDec(addout);
+    let candout = toDecimal.toDec(andout);
+
+    let fout = Mux16.mux16(candout,caddout,f);
+
+    let cfout = toDecimal.toDec(fout);
+    let notfout = Not16.not16(cfout);
+    let cnotfout = toDecimal.toDec(notfout);
+
+    let out = Mux16.mux16(cfout,cnotfout,no);
+
+
+    return out;
+  }
+
+  function Array zr(int zx, int nx, int zy, int ny, int f, int no, int x, int y){
+    var Array out, x1, y1, x2, y2,notx1, notx2, noty1,noty2;
+    var Array addout, andout,fout, notfout;
+    var Arary outfirst, outsecond;
+    var int fls, tr, cx1,coutfirst,coutsecond,cnotx1,cy1,cx2,cy2,caddout,candout;
+    var int i,j,a,cfout,cnotfout,cnoty1, final;
+    var int ng,zr,zr0,zr1,zr2;
+
+    let outfirst = Array.new(8);
+    let outsecond = Array.new(8);
+
+    let fls = 0;
+    let tr = 0;
+
+    let x1 = Mux16.mux16(x, fls, zx);
+    let y1 = Mux16.mux16(y,fls,zy);
+
+    let cx1 = toDecimal.toDec(x1);
+    let notx1 = Not16.not16(cx1);
+    let cnotx1 = toDecimal.toDec(notx1);
+    let x2 = Mux16.mux16(cx1,cnotx1,nx);
+
+    let cy1 = toDecimal.toDec(y1);
+    let noty1 = Not16.not16(cy1);
+    let cnoty1 = toDecimal.toDec(noty1);
+    let y2 = Mux16.mux16(cy1,cnoty1,ny);
+
+    let cx2 = toDecimal.toDec(x2);
+    let cy2 = toDecimal.toDec(y2);
+
+    let addout = Add16.add16(cx2,cy2);
+    let andout = And16.and16(cx2,cy2);
+
+    let caddout = toDecimal.toDec(addout);
+    let candout = toDecimal.toDec(andout);
+
+    let fout = Mux16.mux16(candout,caddout,f);
+
+    let cfout = toDecimal.toDec(fout);
+    let notfout = Not16.not16(cfout);
+    let cnotfout = toDecimal.toDec(notfout);
+
+    let out = Mux16.mux16(cfout,cnotfout,no);
+
+    let i = 8;
+    while(i < 16){
+      let outfirst[i-8] = out[i];
+      let i = i + 1;
+    }
+
+    let i = 0;
+    while(i < 8){
+      let outsecond[i] = out[i];
+      let i = i + 1;
+    }
+
+    let coutfirst = toDecimal8.toDec8(outfirst);
+    let coutsecond = toDecimal8.toDec8(outsecond);
+
+    let zr0 = Or8Way.or8way(coutfirst);
+    let zr1 = Or8Way.or8way(coutsecond);
+    let zr2 = Or.or(zr1,zr0);
+    let zr = Not.not(zr2);
+
+    return zr;
+  }
+
+  function int ng(int zx, int nx, int zy, int ny, int f, int no, int x, int y){
+    var Array out, x1, y1, x2, y2,notx1, notx2, noty1,noty2;
+    var Array addout, andout,fout, notfout;
+    var Arary outfirst, outsecond;
+    var int fls, tr, cx1,coutfirst,coutsecond,cnotx1,cy1,cx2,cy2,caddout,candout;
+    var int i,j,a,cfout,cnotfout,cnoty1, final;
+    var int ng,zr,zr0,zr1,zr2;
+
+    let outfirst = Array.new(8);
+    let outsecond = Array.new(8);
+
+    let fls = 0;
+    let tr = 0;
+
+    let x1 = Mux16.mux16(x, fls, zx);
+    let y1 = Mux16.mux16(y,fls,zy);
+
+    let cx1 = toDecimal.toDec(x1);
+    let notx1 = Not16.not16(cx1);
+    let cnotx1 = toDecimal.toDec(notx1);
+    let x2 = Mux16.mux16(cx1,cnotx1,nx);
+
+    let cy1 = toDecimal.toDec(y1);
+    let noty1 = Not16.not16(cy1);
+    let cnoty1 = toDecimal.toDec(noty1);
+    let y2 = Mux16.mux16(cy1,cnoty1,ny);
+
+    let cx2 = toDecimal.toDec(x2);
+    let cy2 = toDecimal.toDec(y2);
+
+    let addout = Add16.add16(cx2,cy2);
+    let andout = And16.and16(cx2,cy2);
+
+    let caddout = toDecimal.toDec(addout);
+    let candout = toDecimal.toDec(andout);
+
+    let fout = Mux16.mux16(candout,caddout,f);
+
+    let cfout = toDecimal.toDec(fout);
+    let notfout = Not16.not16(cfout);
+    let cnotfout = toDecimal.toDec(notfout);
+
+    let out = Mux16.mux16(cfout,cnotfout,no);
+
+    let ng = out[15];
+
+    return ng;
+  }
+}

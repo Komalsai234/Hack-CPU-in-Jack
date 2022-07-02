@@ -1,0 +1,129 @@
+// Implementation of Hack CPU in jack.
+
+class CPU {
+  function int o1(int inM, int x,int reset){
+    var Array outtM,prevout,i,A,AM,D,outM,instruction;
+    var int ni,intoA,AorM,intoD,couttM,cins,cprevout,ci,cA,cinM,cAM,cD,zr,ng;
+
+    let outtM = Array.new(16);
+    let prevout = Array.new(16);
+    let instruction = toBinaryall.toBinall(x);
+
+    let ni = Not.not(instruction[0]);
+
+    let couttM = toDecimal.toDec(outtM);
+    let i = Mux16.mux16(couttM,x,ni);
+
+    let intoA = Or.or(instruction[10],ni);
+    let cprevout = toDecimal.toDec(prevout);
+    let ci = toDecimal.toDec(i);
+    let A = Register16.register16(cprevout,ci,intoA);
+
+    let AorM = And.and(instruction[15],instruction[12]);
+    let cA = toDecimal.toDec(A);
+
+    let AM = Mux16.mux16(cA,inM,AorM);
+
+    let intoD = And.and(instruction[0],instruction[12]);
+
+    let D = Register16.register16(cprevout,couttM,intoD);
+
+    let cAM = toDecimal.toDec(AM);
+    let cD = toDecimal.toDec(D);
+
+    let outM = ALU.alu(instruction[4],instruction[5],instruction[6],instruction[7],instruction[8],instruction[9],cD,cAM);
+
+    return outM;
+
+   }
+
+   function int o2(int inM,int x,int reset){
+     var int writeM;
+     var Array instruction;
+
+     let instruction = toBinaryall.toBinall(x);
+
+     let writeM = And.and(instruction[0],instruction[12]);
+
+     return writeM;
+   }
+
+   function Array addressm(int inM,int x,int reset){
+     var Array outtM,prevout,i,A,AM,D,outM,instruction;
+     var int ni,intoA,AorM,intoD,couttM,cins,cprevout,ci,cA,cinM,cAM,cD,zr,ng;
+
+     let outtM = Array.new(16);
+     let prevout = Array.new(16);
+     let instruction = toBinaryall.toBinall(x);
+
+     let ni = Not.not(instruction[0]);
+
+     let couttM = toDecimal.toDec(outtM);
+     let i = Mux16.mux16(couttM,x,ni);
+
+     let intoA = Or.or(instruction[10],ni);
+     let cprevout = toDecimal.toDec(prevout);
+     let ci = toDecimal.toDec(i);
+     let A = Register16.register16(cprevout,ci,intoA);
+
+     return A;
+   }
+
+   function Array o3(int inM,int x,int reset){
+     var Array outtM,prevout,i,A,AM,D,outM,instruction,out;
+     var int ni,intoA,AorM,intoD,couttM,cins,cprevout,ci,cA,cinM,cAM,cD,zr,ng;
+     var int writeM,pos,nzr,jgt,posnzr,ld1,jeq,ld2,jlt,ld3,ldt,ld;
+
+     let outtM = Array.new(16);
+     let prevout = Array.new(16);
+     let instruction = toBinaryall.toBinall(x);
+
+     let ni = Not.not(instruction[0]);
+
+     let couttM = toDecimal.toDec(outtM);
+     let i = Mux16.mux16(couttM,x,ni);
+
+     let intoA = Or.or(instruction[10],ni);
+     let cprevout = toDecimal.toDec(prevout);
+     let ci = toDecimal.toDec(i);
+     let A = Register16.register16(cprevout,ci,intoA);
+
+     let AorM = And.and(instruction[15],instruction[12]);
+     let cA = toDecimal.toDec(A);
+
+     let AM = Mux16.mux16(cA,inM,AorM);
+
+     let intoD = And.and(instruction[0],instruction[12]);
+
+     let D = Register16.register16(cprevout,couttM,intoD);
+
+     let cAM = toDecimal.toDec(AM);
+     let cD = toDecimal.toDec(D);
+
+     let outM = ALU.alu(instruction[4],instruction[5],instruction[6],instruction[7],instruction[8],instruction[9],cD,cAM);
+     let zr = ALU.zr(instruction[4],instruction[5],instruction[6],instruction[7],instruction[8],instruction[9],cD,cAM);
+     let ng = ALU.alu(instruction[4],instruction[5],instruction[6],instruction[7],instruction[8],instruction[9],cD,cAM);
+
+     let writeM = And.and(instruction[0],instruction[12]);
+
+     let pos  = Not.not(ng);
+	   let nzr = Not.not(zr);
+	   let jgt = And.and(instruction[0], instruction[15]);
+	   let posnzr = And.and(pos, jgt);
+	   let ld1 = And.and(jgt, posnzr);
+
+	   let jeq = And.and(instruction[0], instruction[14]);
+	   let ld2 = And.and(jgt, zr);
+
+	   let jlt = And.and(instruction[0], instruction[13]);
+	   let ld3 = And.and(jlt, ng);
+
+	   let ldt = Or.or(ld1, ld2);
+	   let ld = Or.or(ld3, ldt);
+
+     let out = PC.pc(cA,ld,1,reset);
+
+     return out;
+
+   }
+}
