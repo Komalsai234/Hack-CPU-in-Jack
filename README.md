@@ -1,8 +1,8 @@
 
 # Implementation of Hack CPU in Jack
 
-In this project of implementing the Hack CPU in jack, all the basic gates like And, Or, Not, Xor are build using the nand gate. Using these basic 
-gates we build the remaining gates which are essential for building Hack CPU.
+In this project of implementing the Hack CPU in Jack, all the basic gates like And, Or, Not, Xor are build using the nand gate. Using these basic 
+gates, we build the remaining gates which are essential for building Hack CPU.
 
    
 
